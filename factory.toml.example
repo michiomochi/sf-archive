@@ -1,0 +1,56 @@
+# sf（ソフトウェアファクトリー）の環境設定の雛形。
+# 使い方: cp factory.toml.example envs/<環境名>.toml にして値を書き換える（このファイルの値はサンプル）。
+# make は ENV=<環境名> で envs/<環境名>.toml を使う。make deploy が <live>/config.toml として本番へ配る。
+# 環境ごとに違う値はこの1枚だけ。プロファイル名・工程の順番・cron の間隔はリポジトリに固定。
+# 先頭の `~` は読み込み時に展開される。
+
+# 持ち主の名前。プロファイルの説明、ボード名（"<owner> factory"）などに入る。必須。
+owner = "example"
+
+[hermes]
+home = "~/.hermes"                  # Hermes のホーム
+cron_profile = "default"            # cron ジョブとゲートウェイを持つプロファイル（このプロファイルの scripts/ にラッパーを置く）
+board = "factory"                   # kanban ボード名（default と分けると、監視の自動修復が他のカードに触れない）
+path_prepend = ["~/.local/bin"]     # PATH の先頭に足す。python3 / hermes / ntn の場所（mise の shims など）
+
+[paths]
+repo = "~/ghq/github.com/example-org/sf"  # このリポジトリの置き場所
+live = "~/.hermes/scripts/example-ai"                     # 本番のスクリプトの置き場所（safe_deploy の配布先。専用の場所にする）
+skills = "~/.hermes/shared/skills"                        # スキルの共有ディレクトリ（各プロファイルの skills.external_dirs）
+state = "~/.hermes/state"                                 # 状態ファイル（epic_gate_status.json など）
+
+[notion]
+parent_page = "00000000-0000-0000-0000-000000000000"  # DB を作る親ページの ID（インテグレーションに共有しておく）
+# 3つの data source ID。新規は UNSET にしておくと make notion-bootstrap が作って書き戻す。
+task_ds = "UNSET"
+epic_ds = "UNSET"
+review_ds = "UNSET"
+
+[chat]
+# 配信先は `discord:<ID>` か `slack:<チャンネルID>`。カンマで区切ると複数に同時に送れる（例: "discord:000000000000000000,slack:C0123456789"）。
+# Slack を含めるなら cron プロファイルの .env に SLACK_BOT_TOKEN が要る（INSTALL.md 参照。make doctor が見る）。
+deliver = "discord:000000000000000000"          # 通常の出力の配信先（専用スレッド）
+failure_deliver = "discord:000000000000000001"  # 失敗の通知先（開発チャンネル本体）
+# 承認依頼（レビュー行）の通知。ask_human.py が、エピックの「チャット」URLのスレッド（チャンネル）にメンションして投稿する。
+# メッセージの URL なら、そのメッセージにスレッド「承認待ち: <エピック名>」を作って投稿する（既にあればそのスレッド）。
+# URL が無い・Discord でないときは、fallback_parent の下に同じ名前の新規スレッドを作って投稿する。どちらもスレッドの URL を「チャット」に書き戻す。
+# トークンは cron プロファイルの .env の DISCORD_BOT_TOKEN。投稿に失敗してもレビュー行は残る（stderr に WARN）。
+mention_user = "000000000000000002"                # メンションする Discord のユーザー ID（任意。無ければメンションせず投稿だけ）
+fallback_parent = "discord:000000000000000001"     # 新規スレッドの親チャンネル（--deliver 形式。任意。投稿には channel id だけ使う）
+
+[models]
+provider = "claude-subscription-directsdk-experimental"  # cron とカードで使うプロバイダ
+worker = "claude-sonnet-5-5[1m]"                          # 取り込み・プランナー・監視・実行役
+design = "claude-sonnet-5-5[1m]"                          # 設計の工程（worker と同じなら、カードに model を付けない）
+reviewer = "claude-opus-5-5[1m]"                          # レビュー役
+
+[git]
+branch_prefix = "example/"                                        # 作業ブランチの接頭辞
+repo_url = "https://github.com/example-org/sf"    # リポジトリの URL
+
+# 承認のあとの出荷（任意。無ければどの repo もマージまで）。登録した repo だけ、マージのあとに本番へ反映する。
+# [ship.repos."owner/repo"]
+# test = ["make", "test"]                                    # マージ前に main に重ねて流す検査
+# deploy = [["make", "ship"], ["make", "check"], ["make", "smoke"]]   # 順に流す（作業ディレクトリは main の作業ツリー）
+# cron_paths = ["hermes/cron.toml"]                          # 差分に入っていたら cron の定義を先に流すパス
+# describe = "本番へ反映します"                              # 承認依頼の1章に入る一文（deploy があるとき必須）

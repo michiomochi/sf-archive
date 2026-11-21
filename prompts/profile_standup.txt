@@ -1,0 +1,1 @@
+Use the skill profile-standup. Run today's profile standup using the injected inventory output: decide, apply only the auto-adoptable items (with backup), and report in Japanese.

@@ -1,0 +1,11 @@
+name = "example"
+description = "Example plugin that shows how an organization-specific add-on plugs into sf. The original organization-specific plugin is not part of this archive."
+
+[config]
+required = ["team_name"]
+
+[template_names]
+team_name = "team_name"
+
+[defaults]
+team_name = "Example team"

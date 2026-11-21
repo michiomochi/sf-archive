@@ -1,0 +1,1202 @@
+[
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "案件概要の作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "案件作成",
+    "full": "[要件定義] 案件概要の作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "案件概要の作成"
+  ],
+  "texts": {
+   "id-0": ""
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] 案件概要の作成\n\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "案件概要の作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "案件作成",
+    "full": "[要件定義] 案件概要の作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "案件概要の作成"
+  ],
+  "texts": {
+   "id-0": "line one\nline two"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] 案件概要の作成\nline one\nline two\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "案件概要の作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "案件作成",
+    "full": "[要件定義] 案件概要の作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "案件概要の作成"
+  ],
+  "texts": {
+   "id-0": "has ${placeholder} and $dollar and {braces} and %s"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] 案件概要の作成\nhas ${placeholder} and $dollar and {braces} and %s\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A",
+   "B"
+  ],
+  "n_groups": 2,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "PRDの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRDの作成",
+    "status": "未着手"
+   },
+   "ユースケース仕様書の作成": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] ユースケース仕様書の作成",
+    "status": "未着手"
+   },
+   "CSタスクの洗い出し": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] CSタスクの洗い出し",
+    "status": "未着手"
+   },
+   "マーケタスクの洗い出し": {
+    "id": "id-3",
+    "url": "https://app.notion.com/p/00000000000000000000000000000003",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] マーケタスクの洗い出し",
+    "status": "未着手"
+   },
+   "PRタスクの洗い出し": {
+    "id": "id-4",
+    "url": "https://app.notion.com/p/00000000000000000000000000000004",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRタスクの洗い出し",
+    "status": "未着手"
+   },
+   "リーガルチェック": {
+    "id": "id-5",
+    "url": "https://app.notion.com/p/00000000000000000000000000000005",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] リーガルチェック",
+    "status": "未着手"
+   },
+   "商品・業務リスク評価の実施": {
+    "id": "id-6",
+    "url": "https://app.notion.com/p/00000000000000000000000000000006",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] 商品・業務リスク評価の実施",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "PRDの作成",
+   "ユースケース仕様書の作成",
+   "リーガルチェック",
+   "商品・業務リスク評価の実施"
+  ],
+  "texts": {
+   "id-0": "",
+   "id-1": "",
+   "id-2": "",
+   "id-3": "",
+   "id-4": "",
+   "id-5": "",
+   "id-6": ""
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] PRDの作成\n\n\n## [要件定義] ユースケース仕様書の作成\n\n\n## [要件定義] リーガルチェック\n\n\n## [要件定義] 商品・業務リスク評価の実施\n\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nPARALLEL SPLIT: this phase runs as 2 parallel cards (groups A, B); this card is group A and covers only the processes below. Another card of the same phase covers the rest. When you finish and the reviewer approves, the reviewer sets the private phase row to 完了 ONLY if the sibling card(s) of this phase (same title, same tenant) are done; otherwise leave the row 進行中. Keep numbers and names consistent with the sibling's deliverables. HARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "B",
+  "group_names": [
+   "A",
+   "B"
+  ],
+  "n_groups": 2,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "PRDの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRDの作成",
+    "status": "未着手"
+   },
+   "ユースケース仕様書の作成": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] ユースケース仕様書の作成",
+    "status": "未着手"
+   },
+   "CSタスクの洗い出し": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] CSタスクの洗い出し",
+    "status": "未着手"
+   },
+   "マーケタスクの洗い出し": {
+    "id": "id-3",
+    "url": "https://app.notion.com/p/00000000000000000000000000000003",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] マーケタスクの洗い出し",
+    "status": "未着手"
+   },
+   "PRタスクの洗い出し": {
+    "id": "id-4",
+    "url": "https://app.notion.com/p/00000000000000000000000000000004",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRタスクの洗い出し",
+    "status": "未着手"
+   },
+   "リーガルチェック": {
+    "id": "id-5",
+    "url": "https://app.notion.com/p/00000000000000000000000000000005",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] リーガルチェック",
+    "status": "未着手"
+   },
+   "商品・業務リスク評価の実施": {
+    "id": "id-6",
+    "url": "https://app.notion.com/p/00000000000000000000000000000006",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] 商品・業務リスク評価の実施",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "CSタスクの洗い出し",
+   "PRタスクの洗い出し",
+   "マーケタスクの洗い出し"
+  ],
+  "texts": {
+   "id-0": "",
+   "id-1": "",
+   "id-2": "",
+   "id-3": "",
+   "id-4": "",
+   "id-5": "",
+   "id-6": ""
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] CSタスクの洗い出し\n\n\n## [要件定義] PRタスクの洗い出し\n\n\n## [要件定義] マーケタスクの洗い出し\n\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nPARALLEL SPLIT: this phase runs as 2 parallel cards (groups A, B); this card is group B and covers only the processes below. Another card of the same phase covers the rest. When you finish and the reviewer approves, the reviewer sets the private phase row to 完了 ONLY if the sibling card(s) of this phase (same title, same tenant) are done; otherwise leave the row 進行中. Keep numbers and names consistent with the sibling's deliverables. HARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A",
+   "B"
+  ],
+  "n_groups": 2,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "PRDの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRDの作成",
+    "status": "未着手"
+   },
+   "ユースケース仕様書の作成": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] ユースケース仕様書の作成",
+    "status": "未着手"
+   },
+   "CSタスクの洗い出し": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] CSタスクの洗い出し",
+    "status": "未着手"
+   },
+   "マーケタスクの洗い出し": {
+    "id": "id-3",
+    "url": "https://app.notion.com/p/00000000000000000000000000000003",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] マーケタスクの洗い出し",
+    "status": "未着手"
+   },
+   "PRタスクの洗い出し": {
+    "id": "id-4",
+    "url": "https://app.notion.com/p/00000000000000000000000000000004",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRタスクの洗い出し",
+    "status": "未着手"
+   },
+   "リーガルチェック": {
+    "id": "id-5",
+    "url": "https://app.notion.com/p/00000000000000000000000000000005",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] リーガルチェック",
+    "status": "未着手"
+   },
+   "商品・業務リスク評価の実施": {
+    "id": "id-6",
+    "url": "https://app.notion.com/p/00000000000000000000000000000006",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] 商品・業務リスク評価の実施",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "PRDの作成",
+   "ユースケース仕様書の作成",
+   "リーガルチェック",
+   "商品・業務リスク評価の実施"
+  ],
+  "texts": {
+   "id-0": "line one\nline two",
+   "id-1": "line one\nline two",
+   "id-2": "line one\nline two",
+   "id-3": "line one\nline two",
+   "id-4": "line one\nline two",
+   "id-5": "line one\nline two",
+   "id-6": "line one\nline two"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] PRDの作成\nline one\nline two\n\n## [要件定義] ユースケース仕様書の作成\nline one\nline two\n\n## [要件定義] リーガルチェック\nline one\nline two\n\n## [要件定義] 商品・業務リスク評価の実施\nline one\nline two\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nPARALLEL SPLIT: this phase runs as 2 parallel cards (groups A, B); this card is group A and covers only the processes below. Another card of the same phase covers the rest. When you finish and the reviewer approves, the reviewer sets the private phase row to 完了 ONLY if the sibling card(s) of this phase (same title, same tenant) are done; otherwise leave the row 進行中. Keep numbers and names consistent with the sibling's deliverables. HARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "B",
+  "group_names": [
+   "A",
+   "B"
+  ],
+  "n_groups": 2,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "PRDの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRDの作成",
+    "status": "未着手"
+   },
+   "ユースケース仕様書の作成": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] ユースケース仕様書の作成",
+    "status": "未着手"
+   },
+   "CSタスクの洗い出し": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] CSタスクの洗い出し",
+    "status": "未着手"
+   },
+   "マーケタスクの洗い出し": {
+    "id": "id-3",
+    "url": "https://app.notion.com/p/00000000000000000000000000000003",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] マーケタスクの洗い出し",
+    "status": "未着手"
+   },
+   "PRタスクの洗い出し": {
+    "id": "id-4",
+    "url": "https://app.notion.com/p/00000000000000000000000000000004",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRタスクの洗い出し",
+    "status": "未着手"
+   },
+   "リーガルチェック": {
+    "id": "id-5",
+    "url": "https://app.notion.com/p/00000000000000000000000000000005",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] リーガルチェック",
+    "status": "未着手"
+   },
+   "商品・業務リスク評価の実施": {
+    "id": "id-6",
+    "url": "https://app.notion.com/p/00000000000000000000000000000006",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] 商品・業務リスク評価の実施",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "CSタスクの洗い出し",
+   "PRタスクの洗い出し",
+   "マーケタスクの洗い出し"
+  ],
+  "texts": {
+   "id-0": "line one\nline two",
+   "id-1": "line one\nline two",
+   "id-2": "line one\nline two",
+   "id-3": "line one\nline two",
+   "id-4": "line one\nline two",
+   "id-5": "line one\nline two",
+   "id-6": "line one\nline two"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] CSタスクの洗い出し\nline one\nline two\n\n## [要件定義] PRタスクの洗い出し\nline one\nline two\n\n## [要件定義] マーケタスクの洗い出し\nline one\nline two\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nPARALLEL SPLIT: this phase runs as 2 parallel cards (groups A, B); this card is group B and covers only the processes below. Another card of the same phase covers the rest. When you finish and the reviewer approves, the reviewer sets the private phase row to 完了 ONLY if the sibling card(s) of this phase (same title, same tenant) are done; otherwise leave the row 進行中. Keep numbers and names consistent with the sibling's deliverables. HARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A",
+   "B"
+  ],
+  "n_groups": 2,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "PRDの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRDの作成",
+    "status": "未着手"
+   },
+   "ユースケース仕様書の作成": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] ユースケース仕様書の作成",
+    "status": "未着手"
+   },
+   "CSタスクの洗い出し": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] CSタスクの洗い出し",
+    "status": "未着手"
+   },
+   "マーケタスクの洗い出し": {
+    "id": "id-3",
+    "url": "https://app.notion.com/p/00000000000000000000000000000003",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] マーケタスクの洗い出し",
+    "status": "未着手"
+   },
+   "PRタスクの洗い出し": {
+    "id": "id-4",
+    "url": "https://app.notion.com/p/00000000000000000000000000000004",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRタスクの洗い出し",
+    "status": "未着手"
+   },
+   "リーガルチェック": {
+    "id": "id-5",
+    "url": "https://app.notion.com/p/00000000000000000000000000000005",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] リーガルチェック",
+    "status": "未着手"
+   },
+   "商品・業務リスク評価の実施": {
+    "id": "id-6",
+    "url": "https://app.notion.com/p/00000000000000000000000000000006",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] 商品・業務リスク評価の実施",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "PRDの作成",
+   "ユースケース仕様書の作成",
+   "リーガルチェック",
+   "商品・業務リスク評価の実施"
+  ],
+  "texts": {
+   "id-0": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-1": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-2": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-3": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-4": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-5": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-6": "has ${placeholder} and $dollar and {braces} and %s"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] PRDの作成\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [要件定義] ユースケース仕様書の作成\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [要件定義] リーガルチェック\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [要件定義] 商品・業務リスク評価の実施\nhas ${placeholder} and $dollar and {braces} and %s\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nPARALLEL SPLIT: this phase runs as 2 parallel cards (groups A, B); this card is group A and covers only the processes below. Another card of the same phase covers the rest. When you finish and the reviewer approves, the reviewer sets the private phase row to 完了 ONLY if the sibling card(s) of this phase (same title, same tenant) are done; otherwise leave the row 進行中. Keep numbers and names consistent with the sibling's deliverables. HARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "B",
+  "group_names": [
+   "A",
+   "B"
+  ],
+  "n_groups": 2,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "PRDの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRDの作成",
+    "status": "未着手"
+   },
+   "ユースケース仕様書の作成": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] ユースケース仕様書の作成",
+    "status": "未着手"
+   },
+   "CSタスクの洗い出し": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] CSタスクの洗い出し",
+    "status": "未着手"
+   },
+   "マーケタスクの洗い出し": {
+    "id": "id-3",
+    "url": "https://app.notion.com/p/00000000000000000000000000000003",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] マーケタスクの洗い出し",
+    "status": "未着手"
+   },
+   "PRタスクの洗い出し": {
+    "id": "id-4",
+    "url": "https://app.notion.com/p/00000000000000000000000000000004",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRタスクの洗い出し",
+    "status": "未着手"
+   },
+   "リーガルチェック": {
+    "id": "id-5",
+    "url": "https://app.notion.com/p/00000000000000000000000000000005",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] リーガルチェック",
+    "status": "未着手"
+   },
+   "商品・業務リスク評価の実施": {
+    "id": "id-6",
+    "url": "https://app.notion.com/p/00000000000000000000000000000006",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] 商品・業務リスク評価の実施",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "CSタスクの洗い出し",
+   "PRタスクの洗い出し",
+   "マーケタスクの洗い出し"
+  ],
+  "texts": {
+   "id-0": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-1": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-2": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-3": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-4": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-5": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-6": "has ${placeholder} and $dollar and {braces} and %s"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] CSタスクの洗い出し\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [要件定義] PRタスクの洗い出し\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [要件定義] マーケタスクの洗い出し\nhas ${placeholder} and $dollar and {braces} and %s\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nPARALLEL SPLIT: this phase runs as 2 parallel cards (groups A, B); this card is group B and covers only the processes below. Another card of the same phase covers the rest. When you finish and the reviewer approves, the reviewer sets the private phase row to 完了 ONLY if the sibling card(s) of this phase (same title, same tenant) are done; otherwise leave the row 進行中. Keep numbers and names consistent with the sibling's deliverables. HARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "CSタスクの洗い出し": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] CSタスクの洗い出し",
+    "status": "未着手"
+   },
+   "PRタスクの洗い出し": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRタスクの洗い出し",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "CSタスクの洗い出し",
+   "PRタスクの洗い出し"
+  ],
+  "texts": {
+   "id-0": "",
+   "id-1": ""
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] CSタスクの洗い出し\n\n\n## [要件定義] PRタスクの洗い出し\n\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "CSタスクの洗い出し": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] CSタスクの洗い出し",
+    "status": "未着手"
+   },
+   "PRタスクの洗い出し": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRタスクの洗い出し",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "CSタスクの洗い出し",
+   "PRタスクの洗い出し"
+  ],
+  "texts": {
+   "id-0": "line one\nline two",
+   "id-1": "line one\nline two"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] CSタスクの洗い出し\nline one\nline two\n\n## [要件定義] PRタスクの洗い出し\nline one\nline two\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "CSタスクの洗い出し": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] CSタスクの洗い出し",
+    "status": "未着手"
+   },
+   "PRタスクの洗い出し": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRタスクの洗い出し",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "CSタスクの洗い出し",
+   "PRタスクの洗い出し"
+  ],
+  "texts": {
+   "id-0": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-1": "has ${placeholder} and $dollar and {braces} and %s"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] CSタスクの洗い出し\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [要件定義] PRタスクの洗い出し\nhas ${placeholder} and $dollar and {braces} and %s\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "PRDの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRDの作成",
+    "status": "未着手"
+   },
+   "リーガルチェック": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] リーガルチェック",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "PRDの作成",
+   "リーガルチェック"
+  ],
+  "texts": {
+   "id-0": "",
+   "id-1": ""
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] PRDの作成\n\n\n## [要件定義] リーガルチェック\n\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "PRDの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRDの作成",
+    "status": "未着手"
+   },
+   "リーガルチェック": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] リーガルチェック",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "PRDの作成",
+   "リーガルチェック"
+  ],
+  "texts": {
+   "id-0": "line one\nline two",
+   "id-1": "line one\nline two"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] PRDの作成\nline one\nline two\n\n## [要件定義] リーガルチェック\nline one\nline two\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "要件定義",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "PRDの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] PRDの作成",
+    "status": "未着手"
+   },
+   "リーガルチェック": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "プロダクト要件定義",
+    "full": "[要件定義] リーガルチェック",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "PRDの作成",
+   "リーガルチェック"
+  ],
+  "texts": {
+   "id-0": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-1": "has ${placeholder} and $dollar and {braces} and %s"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [要件定義]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [要件定義] PRDの作成\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [要件定義] リーガルチェック\nhas ${placeholder} and $dollar and {braces} and %s\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "設計",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "Design Docの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "開発要件定義",
+    "full": "[設計] Design Docの作成",
+    "status": "未着手"
+   },
+   "実装・リリースタスクの洗い出し": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "開発要件定義",
+    "full": "[設計] 実装・リリースタスクの洗い出し",
+    "status": "未着手"
+   },
+   "実装見積もりの作成": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "開発要件定義",
+    "full": "[設計] 実装見積もりの作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "Design Docの作成",
+   "実装・リリースタスクの洗い出し",
+   "実装見積もりの作成"
+  ],
+  "texts": {
+   "id-0": "",
+   "id-1": "",
+   "id-2": ""
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [設計]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [設計] Design Docの作成\n\n\n## [設計] 実装・リリースタスクの洗い出し\n\n\n## [設計] 実装見積もりの作成\n\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "設計",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "Design Docの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "開発要件定義",
+    "full": "[設計] Design Docの作成",
+    "status": "未着手"
+   },
+   "実装・リリースタスクの洗い出し": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "開発要件定義",
+    "full": "[設計] 実装・リリースタスクの洗い出し",
+    "status": "未着手"
+   },
+   "実装見積もりの作成": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "開発要件定義",
+    "full": "[設計] 実装見積もりの作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "Design Docの作成",
+   "実装・リリースタスクの洗い出し",
+   "実装見積もりの作成"
+  ],
+  "texts": {
+   "id-0": "line one\nline two",
+   "id-1": "line one\nline two",
+   "id-2": "line one\nline two"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [設計]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [設計] Design Docの作成\nline one\nline two\n\n## [設計] 実装・リリースタスクの洗い出し\nline one\nline two\n\n## [設計] 実装見積もりの作成\nline one\nline two\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "設計",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "Design Docの作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "開発要件定義",
+    "full": "[設計] Design Docの作成",
+    "status": "未着手"
+   },
+   "実装・リリースタスクの洗い出し": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "開発要件定義",
+    "full": "[設計] 実装・リリースタスクの洗い出し",
+    "status": "未着手"
+   },
+   "実装見積もりの作成": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "開発要件定義",
+    "full": "[設計] 実装見積もりの作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "Design Docの作成",
+   "実装・リリースタスクの洗い出し",
+   "実装見積もりの作成"
+  ],
+  "texts": {
+   "id-0": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-1": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-2": "has ${placeholder} and $dollar and {braces} and %s"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [設計]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [設計] Design Docの作成\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [設計] 実装・リリースタスクの洗い出し\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [設計] 実装見積もりの作成\nhas ${placeholder} and $dollar and {braces} and %s\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "実装",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "実装・リリースタスクの実行": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "開発",
+    "full": "[実装] 実装・リリースタスクの実行",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "実装・リリースタスクの実行"
+  ],
+  "texts": {
+   "id-0": ""
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [実装]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [実装] 実装・リリースタスクの実行\n\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "実装",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "実装・リリースタスクの実行": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "開発",
+    "full": "[実装] 実装・リリースタスクの実行",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "実装・リリースタスクの実行"
+  ],
+  "texts": {
+   "id-0": "line one\nline two"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [実装]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [実装] 実装・リリースタスクの実行\nline one\nline two\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "実装",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "実装・リリースタスクの実行": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "開発",
+    "full": "[実装] 実装・リリースタスクの実行",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "実装・リリースタスクの実行"
+  ],
+  "texts": {
+   "id-0": "has ${placeholder} and $dollar and {braces} and %s"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [実装]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [実装] 実装・リリースタスクの実行\nhas ${placeholder} and $dollar and {braces} and %s\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "テスト",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "開発テスト計画の作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "テスト",
+    "full": "[テスト] 開発テスト計画の作成",
+    "status": "未着手"
+   },
+   "開発テストの実施": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "テスト",
+    "full": "[テスト] 開発テストの実施",
+    "status": "未着手"
+   },
+   "QAケースの作成": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "テスト",
+    "full": "[テスト] QAケースの作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "QAケースの作成",
+   "開発テスト計画の作成",
+   "開発テストの実施"
+  ],
+  "texts": {
+   "id-0": "",
+   "id-1": "",
+   "id-2": ""
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [テスト]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [テスト] QAケースの作成\n\n\n## [テスト] 開発テスト計画の作成\n\n\n## [テスト] 開発テストの実施\n\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "テスト",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "開発テスト計画の作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "テスト",
+    "full": "[テスト] 開発テスト計画の作成",
+    "status": "未着手"
+   },
+   "開発テストの実施": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "テスト",
+    "full": "[テスト] 開発テストの実施",
+    "status": "未着手"
+   },
+   "QAケースの作成": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "テスト",
+    "full": "[テスト] QAケースの作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "QAケースの作成",
+   "開発テスト計画の作成",
+   "開発テストの実施"
+  ],
+  "texts": {
+   "id-0": "line one\nline two",
+   "id-1": "line one\nline two",
+   "id-2": "line one\nline two"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [テスト]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [テスト] QAケースの作成\nline one\nline two\n\n## [テスト] 開発テスト計画の作成\nline one\nline two\n\n## [テスト] 開発テストの実施\nline one\nline two\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "テスト",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "開発テスト計画の作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "テスト",
+    "full": "[テスト] 開発テスト計画の作成",
+    "status": "未着手"
+   },
+   "開発テストの実施": {
+    "id": "id-1",
+    "url": "https://app.notion.com/p/00000000000000000000000000000001",
+    "phase": "テスト",
+    "full": "[テスト] 開発テストの実施",
+    "status": "未着手"
+   },
+   "QAケースの作成": {
+    "id": "id-2",
+    "url": "https://app.notion.com/p/00000000000000000000000000000002",
+    "phase": "テスト",
+    "full": "[テスト] QAケースの作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "QAケースの作成",
+   "開発テスト計画の作成",
+   "開発テストの実施"
+  ],
+  "texts": {
+   "id-0": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-1": "has ${placeholder} and $dollar and {braces} and %s",
+   "id-2": "has ${placeholder} and $dollar and {braces} and %s"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [テスト]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [テスト] QAケースの作成\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [テスト] 開発テスト計画の作成\nhas ${placeholder} and $dollar and {braces} and %s\n\n## [テスト] 開発テストの実施\nhas ${placeholder} and $dollar and {braces} and %s\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "リリース判定",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "リリース判定書の作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "リリース判定",
+    "full": "[リリース判定] リリース判定書の作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "リリース判定書の作成"
+  ],
+  "texts": {
+   "id-0": ""
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [リリース判定]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [リリース判定] リリース判定書の作成\n\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "リリース判定",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "リリース判定書の作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "リリース判定",
+    "full": "[リリース判定] リリース判定書の作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "リリース判定書の作成"
+  ],
+  "texts": {
+   "id-0": "line one\nline two"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [リリース判定]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [リリース判定] リリース判定書の作成\nline one\nline two\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ },
+ {
+  "ph": "リリース判定",
+  "g": "A",
+  "group_names": [
+   "A"
+  ],
+  "n_groups": 1,
+  "epic_url": "https://app.notion.com/p/EPIC",
+  "hub_name": "ハブ名 テスト",
+  "prow_url": "https://www.notion.so/PROW",
+  "procs": {
+   "リリース判定書の作成": {
+    "id": "id-0",
+    "url": "https://app.notion.com/p/00000000000000000000000000000000",
+    "phase": "リリース判定",
+    "full": "[リリース判定] リリース判定書の作成",
+    "status": "未着手"
+   }
+  },
+  "ordered": [
+   "リリース判定書の作成"
+  ],
+  "texts": {
+   "id-0": "has ${placeholder} and $dollar and {braces} and %s"
+  },
+  "body": "Epic: https://app.notion.com/p/EPIC\nHub: ハブ名 テスト\nPhase: [リリース判定]. Read the earlier phases' deliverables first and build on them. Task row for this card (進行中): https://www.notion.so/PROW. It is the task page (作業メモ, 完了レポート); put this card's ID on the first line of its 作業メモ; create no other private row. Do the row's やることチェックリスト items in order.\n\n## [リリース判定] リリース判定書の作成\nhas ${placeholder} and $dollar and {braces} and %s\n\nCONTEXT FILE: CONTEXT.md in the card workspace (env HERMES_KANBAN_WORKSPACE, kept until completion). Read it first on every run (re-check only git status and rows). Create it in the first run; append at every milestone and before kanban_request_review or kanban_block, under 決めたこと, 捨てた案, 触ったファイル, 次にやること, 検証コマンドと結果 (facts and paths, not contents). Never commit it.\n\nFollow skills autonomous-task-execution and product-development-process. Never put links or names of Notion rows (michiomochi pages) into PRs, commits or code.\n\nHARD RULE: do NOT create, publish or merge a GitHub pull request and do NOT deploy yourself (the gate controller opens the draft PR; after approval ship_approved.py publishes, merges and deploys it), and do NOT ask another person to approve or review. Do NOT use delegate_task. Read each whole file in ONE call (no `sed -n a,bp` paging, no one-grep-per-turn); fetch each Notion page once, note it in CONTEXT.md. Do NOT `git reset --hard`: fix the diff. Each turn costs ~6 s: 100 turns = 10 min of waiting.\n\nCode: 要件定義 and 設計 use no worktree and commit no code; otherwise work in a worktree on branch michiomochi/<slug>; push it to origin (never master/main). Never run `make deploy` from a card: deploy runs once, from the main working tree, run by ship_approved.py after the approved squash merge (`make deploy-check` from your branch is fine).\n\nDeliverables (michiomochi's rule): create every deliverable the checklist names as a child page of this card's task row and link it in the 完了レポート.\n\nUI CHANGE (the branch changes a path under pages/ or src/livechat/ui/, or what the screen shows changes): in the テスト phase put before and after screenshots in the 判定書の草稿 (captions 変更前 / 変更後, at least one each) with one line 'UI 変更：あり' ('UI 変更：なし' otherwise); without them no release ask is created.\n\nKeep anything for others (PR body, requests) as a draft. Ask michiomochi only for the gate approval, via python3 ~/.hermes/scripts/sf/ask_human.py (リリース承認 only); decide design, measurement, estimate and wording yourself, reason in 作業メモ.\n\nFINISH: when the checklist and 完了レポート are done, self-check before kanban_request_review: (1) numbers and names repeated across deliverables are identical; (2) no earlier document contradicts a later one; (3) each checklist item is linked in the 完了レポート; (4) 未確認 is stated as such. Write the result as one line in 作業メモ, then kanban_request_review reviewer=reviewer (points to re-check in the comment of `hermes kanban request-review`). The approving reviewer sets the row to 完了 (AI-to-AI review passed = done); use レビュー中 only when a person must decide something that blocks the work."
+ }
+]

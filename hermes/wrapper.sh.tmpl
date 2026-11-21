@@ -1,0 +1,16 @@
+#!/bin/sh
+# michiomochi ソフトウェアファクトリー: ${about}
+# 実体は ${target_display}(リポジトリの正本は scripts/ と tools/。make deploy で配る)。
+# cron の --script / --monitor-script は cron プロファイルの scripts/ から解決されるので、この薄い .sh を置いている。
+# 自動生成: tools/factory.py wrappers が hermes/wrapper.sh.tmpl から作る。直接編集しない(実行時に設定ファイルは読まない)。
+LIVE="${live}"
+REPO="${repo}"
+# cron はゲートウェイの PATH を引き継ぐので、python3 / hermes / ntn の場所を明示的に足す
+PATH="${path}:$$PATH"
+export PATH
+TARGET="${target}"
+if [ ! -f "$$TARGET" ]; then
+  echo "ERROR $$TARGET がありません(make deploy が済んでいない)"
+  exit 1
+fi
+exec ${run} "$$TARGET" "$$@"

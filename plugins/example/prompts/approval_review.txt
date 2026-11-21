@@ -1,0 +1,1 @@
+approval review for ${owner} (${team_name}). Read the approval requests assigned to ${owner} in your team's workflow tool and summarize each one: what is asked, what looks risky, and a suggested answer. Never approve, reject or comment yourself; read only. Reply in Japanese.

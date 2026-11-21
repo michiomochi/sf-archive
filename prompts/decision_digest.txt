@@ -1,0 +1,5 @@
+Use the skill autonomous-task-execution. Daily reminder of the human decisions still waiting for ${owner} (the real asks are made by ask_human.py; this only reminds).
+1. Query the レビュー DB (collection://${review_ds}) for rows whose ステータス is レビュー待ち; fetch each page and read the chapters 判断すること and 推奨 (a row made before the current chapter set has 何を判断するか and 推奨の選択肢 instead). Also query the エピック DB (collection://${epic_ds}) for rows whose ステータス is 承認待ち.
+2. List only items that are release approvals (リリース承認), completion confirmations, or external-send instructions. Skip anything else and say nothing about it.
+3. Write one concise Japanese message (です・ます調, every URL as a Markdown link): per epic (name linked), what must be decided, the recommended option, how long it has waited. Say how many are waiting.
+4. If nothing is waiting, respond with exactly [SILENT].

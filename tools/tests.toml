@@ -1,0 +1,265 @@
+# テストの一覧(`make test` が回すもの全部)。回すのは tools/test_plan.py(規則はその冒頭)。
+# - tier = "fast": make test-fast が回す。合計の CPU 時間(子プロセスの user＋sys。壁時計ではない)が 60 秒以内(上限は test_plan.py の FAST_CPU_BUDGET)。
+# - tier = "heavy": make test が回す。変えたパスが paths に合うときは make test-paths PATHS="..." でも回す。paths が無い heavy は置けない。
+# - paths: そのテストが対象にするファイルの glob(`*` は / を越えない、`**` は越える)。tools/*.py・tools/test_*.sh・scripts/tests/*・scripts/*_selftest.py は、
+#   どれかの cmd か paths に無いと落ちる(登録漏れ)。tools/test_*.py|sh は cmd に書く(paths に書くだけでは登録にならない)。どの名前にも当たらない paths も落ちる。
+# - cpu_limit: そのテストの CPU 時間の上限(秒)。tier を動かして「速くした」ことにしない(heavy を足す・fast に戻すのは tools/test_test_plan.py の HEAVY の差分に出る)。
+# - cmd の {py} {ENV_FILE} {TEST_CONFIG} は Makefile が渡す値に置き換わる。並びは make test が回す順。
+
+[[test]]
+name = "epic_gate_controller_selftest"
+cmd = ["{py}", "-W", "error", "epic_gate_controller.py", "--selftest"]
+cwd = "scripts"
+env = { SF_CONFIG = "{TEST_CONFIG}" }
+tier = "fast"
+cpu_limit = 15
+paths = ["scripts/epic_selftest.py", "scripts/ship_selftest.py", "scripts/tests/*", "scripts/epic_gate_controller.py"]
+
+[[test]]
+name = "epic_pipeline_health_selftest"
+cmd = ["{py}", "-W", "error", "epic_pipeline_health.py", "--selftest"]
+cwd = "scripts"
+env = { SF_CONFIG = "{TEST_CONFIG}" }
+tier = "fast"
+cpu_limit = 15
+paths = ["scripts/epic_pipeline_health.py"]
+
+[[test]]
+name = "lint_envs"
+cmd = ["{py}", "tools/lint_envs.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["envs/*.toml", "tools/sfplugins.py"]
+
+[[test]]
+name = "lint_levels"
+cmd = ["{py}", "tools/lint_levels.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["scripts/levels.toml"]
+
+[[test]]
+name = "test_lint_levels"
+cmd = ["{py}", "tools/test_lint_levels.py"]
+tier = "fast"
+cpu_limit = 15
+
+[[test]]
+name = "lint_dollar"
+cmd = ["{py}", "tools/lint_dollar.py"]
+tier = "fast"
+cpu_limit = 15
+
+[[test]]
+name = "lint_bash32"
+cmd = ["{py}", "tools/lint_bash32.py"]
+tier = "fast"
+cpu_limit = 15
+
+[[test]]
+name = "test_lint_checks"
+cmd = ["{py}", "tools/test_lint_checks.py"]
+tier = "fast"
+cpu_limit = 20
+paths = ["tools/repo_drift_check.sh"]
+
+[[test]]
+name = "test_skill_lint"
+cmd = ["{py}", "tools/test_skill_lint.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/skill_lint.py", "tools/skill_lint_baseline.json"]
+
+[[test]]
+name = "test_lint_procedures"
+cmd = ["{py}", "tools/test_lint_procedures.py"]
+tier = "fast"
+cpu_limit = 15
+
+[[test]]
+name = "lint_procedures"
+cmd = ["{py}", "tools/lint_procedures.py", "--baseline", "tools/lint_procedures_baseline.json"]
+tier = "fast"
+cpu_limit = 15
+
+[[test]]
+name = "test_lint_cron"
+cmd = ["{py}", "tools/test_lint_cron.py"]
+tier = "fast"
+cpu_limit = 15
+
+[[test]]
+name = "lint_cron"
+cmd = ["{py}", "tools/lint_cron.py", "--baseline", "tools/lint_cron_baseline.json"]
+tier = "fast"
+cpu_limit = 15
+
+[[test]]
+name = "render_all_envs"
+cmd = ["{py}", "tools/factory.py", "render", "--all-envs", "--dry-run"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/factory.py", "hermes/*", "prompts/*", "skills/**", "plugins/**"]
+
+[[test]]
+name = "render_test_config"
+cmd = ["{py}", "tools/factory.py", "render", "--dry-run"]
+env = { SF_CONFIG = "{TEST_CONFIG}" }
+tier = "fast"
+cpu_limit = 15
+paths = ["tests/config.test.toml"]
+
+[[test]]
+name = "test_install"
+cmd = ["{py}", "tools/test_install.py"]
+tier = "fast"
+cpu_limit = 20
+paths = ["tools/factory.py", "tools/sfplugins.py", "hermes/*"]
+
+[[test]]
+name = "test_measure_rerun"
+cmd = ["{py}", "-W", "error", "tools/test_measure_rerun.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/measure_rerun.py"]
+
+# 旧名から sf への移行の再現(実際に /proc を読む)。/proc の無い OS では回さない。
+[[test]]
+name = "test_rename_to_sf"
+cmd = ["{py}", "tools/test_rename_to_sf.py"]
+requires = "/proc"
+tier = "heavy"
+cpu_limit = 20
+paths = ["tools/rename_to_sf.py", "tools/test_rename_to_sf.py", "tools/factory.py", "tools/sync_live.py"]
+
+# make deploy / sync の入口(main だけ・ロックの順序)の検査。
+[[test]]
+name = "test_deploy_guard"
+cmd = ["{py}", "tools/test_deploy_guard.py"]
+tier = "heavy"
+cpu_limit = 20
+paths = ["tools/safe_deploy.sh", "tools/require_main.sh", "tools/sync_live.py", "tools/with_lock.py", "tools/test_deploy_guard.py", "Makefile"]
+
+[[test]]
+name = "test_stamp"
+cmd = ["{py}", "tools/test_stamp.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/stamp.py"]
+
+[[test]]
+name = "test_precheck"
+cmd = ["{py}", "tools/test_precheck.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/precheck.py"]
+
+[[test]]
+name = "test_sync_prune"
+cmd = ["{py}", "tools/test_sync_prune.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/sync_live.py"]
+
+[[test]]
+name = "test_remaining_work"
+cmd = ["{py}", "tools/test_remaining_work.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/remaining_work_check.py"]
+
+# 振り返りの signal・台帳・日次(日をまたぐ待ちを含む)。壁時計が長い。
+[[test]]
+name = "test_retro"
+cmd = ["{py}", "tools/test_retro.py"]
+tier = "heavy"
+cpu_limit = 20
+paths = ["tools/retro_*.py", "tools/retro_definitions.golden.json", "tools/test_retro.py", "scripts/epic_pipeline_health.py"]
+
+[[test]]
+name = "test_makefile"
+cmd = ["{py}", "tools/test_makefile.py"]
+tier = "fast"
+cpu_limit = 20
+paths = ["Makefile"]
+
+[[test]]
+name = "test_create_card"
+cmd = ["{py}", "tools/test_create_card.py"]
+env = { SF_CONFIG = "{ENV_FILE}" }
+tier = "fast"
+cpu_limit = 15
+paths = ["scripts/create_card.py"]
+
+[[test]]
+name = "test_deploy_list"
+cmd = ["{py}", "tools/test_deploy_list.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/safe_deploy.sh"]
+
+[[test]]
+name = "test_golden_limits"
+cmd = ["{py}", "tools/test_golden_limits.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/make_golden.py", "tools/compare_golden.py", "scripts/tests/golden_bodies.json"]
+
+[[test]]
+name = "test_test_plan"
+cmd = ["{py}", "tools/test_test_plan.py"]
+tier = "fast"
+cpu_limit = 20
+paths = ["tools/test_plan.py", "tools/tests.toml"]
+
+[[test]]
+name = "test_ops"
+cmd = ["{py}", "tools/test_ops.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["scripts/ops.py"]
+
+# 本番の置き換えの前後(バックアップ・ロールバック・EPIC 行の比較)の検査。壁時計で最も長い(CPU は少ない: 待ちが多い)。scripts/ を丸ごと staging に写して回すので、scripts/ の変更に合う。
+[[test]]
+name = "test_safe_deploy_sh"
+cmd = ["bash", "tools/test_safe_deploy.sh"]
+tier = "heavy"
+cpu_limit = 45
+paths = ["tools/safe_deploy.sh", "tools/test_safe_deploy.sh", "scripts/*.py", "scripts/templates/*", "scripts/tests/*", "scripts/levels.toml", "tests/config.test.toml"]
+
+[[test]]
+name = "test_ship_e2e"
+cmd = ["{py}", "-W", "error", "tools/test_ship_e2e.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["scripts/ship_approved.py", "tools/retro_metrics.py"]
+
+# 段5: テストした木と出荷する木が同じか(make test が tested_tree.json を書き、ship-tested と ship_approved.py が deploy の前に照合する)。
+[[test]]
+name = "test_tested_tree"
+cmd = ["{py}", "tools/test_tested_tree.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["scripts/tested_tree.py"]
+
+[[test]]
+name = "skill_lint_strict"
+cmd = ["{py}", "tools/skill_lint.py", "--strict-skills"]
+tier = "fast"
+cpu_limit = 15
+paths = ["skills/**"]
+
+[[test]]
+name = "test_profile_inventory"
+cmd = ["{py}", "tools/test_profile_inventory.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["scripts/profile_inventory.py"]
+
+# 第1段(計測): レビュー DB と kanban の差し戻しの理由を、分類タグで数える(tools/review_catches.py report)。読むだけ・決定論・unmeasured を 0 と書かない。
+[[test]]
+name = "test_review_catches"
+cmd = ["{py}", "-W", "error", "tools/test_review_catches.py"]
+tier = "fast"
+cpu_limit = 15
+paths = ["tools/review_catches.py", "tools/retro_metrics.py"]

@@ -1,0 +1,1 @@
+Weekly maintenance of the ${team_name} procedure database for ${owner}: list rows whose due date passed or whose owner field is empty, and propose one fix per row. Do not edit rows. Reply in Japanese.

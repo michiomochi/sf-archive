@@ -1,0 +1,141 @@
+# cron ジョブの定義。リポジトリに固定する部分(間隔、監視スクリプト、スキル、推論の強さ)だけを書く。
+# 環境ごとの値は envs/<環境>.toml の名前で参照する: model -> [models].<名前>、deliver / failure_deliver -> [chat].<名前>、provider -> [models].<名前>。
+# 指示文は prompts/<prompt>.txt を置換した結果。キー(jobs.<キー>)は <live>/cron_ids.json のキー。ジョブの見分けは名前ではなく ID で行う
+# (移行時は `factory.py cron adopt <キー>=<ID> ...` で明示する)。`factory.py cron sync` がこのファイルと本番の差を直す(無いジョブは --paused で作る)。
+
+[defaults]
+catch_up = "off"                    # PC が止まっていたあとに、まとめて走らせない
+deliver = "deliver"                 # 通常の出力の配信先(専用スレッド)
+failure_deliver = "failure_deliver" # 失敗の通知先(#開発 本体)
+provider = "provider"
+
+# --- AI を使う3本 + 反映: 監視スクリプトの出力が前回と変わったときだけ AI を起こす(出力に時刻を入れないこと) ---
+
+[jobs.intake]
+name = "SF タスク取り込み（1分）"
+schedule = "every 1m"
+monitor = "sf-pending-tasks.sh"
+prompt = "intake"
+model = "worker"
+reasoning = "medium"
+skills = ["autonomous-task-execution", "product-development-process"]
+
+[jobs.planner]
+name = "SF プランナー（1分）"
+schedule = "every 1m"
+monitor = "sf-planner-status.sh"
+prompt = "planner"
+model = "worker"
+reasoning = "high"
+skills = ["autonomous-task-execution", "product-development-process"]
+
+[jobs.health]
+name = "SF 監視（1分）"
+schedule = "every 1m"
+monitor = "sf-health.sh"
+prompt = "health"
+model = "worker"
+reasoning = "high"
+skills = ["autonomous-task-execution", "product-development-process"]
+
+[jobs.review_apply]
+name = "SF レビュー反映（3分）"
+schedule = "every 3m"
+monitor = "sf-review-inbox.sh"
+prompt = "review_apply"
+model = "worker"
+reasoning = "medium"
+skills = ["autonomous-task-execution", "product-development-process"]
+
+# --- AI を使わない3本: スクリプトの標準出力をそのまま配信する(空なら沈黙) ---
+
+[jobs.gate]
+name = "SF ゲート制御（1分）"
+schedule = "* * * * *"
+no_agent = true
+script = "sf-gate.sh"
+
+[jobs.ship]
+name = "SF 出荷（3分）"
+schedule = "every 3m"
+no_agent = true
+script = "sf-ship.sh"               # 承認されたリリースを、下書き PR の公開 → squash マージ → 本番反映まで進める(scripts/ship_approved.py)。変わったときだけ出力する
+
+[jobs.task_events]
+name = "SF タスク更新通知（1分）"
+schedule = "every 1m"
+no_agent = true
+script = "sf-task-events.sh"
+
+[jobs.drift]
+name = "SF 差の確認（毎時）"
+schedule = "37 * * * *"             # 既存の `7 * * * *` とずらす
+no_agent = true
+script = "sf-repo-drift.sh"
+
+# --- 個人の定例(AI を使う。本番の `profile-standup` / 判断待ちの督促) ---
+
+[jobs.decision_digest]
+name = "SF 判断待ちダイジェスト"
+schedule = "0 9 * * *"
+prompt = "decision_digest"
+model = "light"
+reasoning = "low"
+skills = ["autonomous-task-execution"]
+
+[jobs.profile_standup]
+name = "SF 朝会(プロファイル棚卸し)"
+schedule = "0 8 * * *"
+prompt = "profile_standup"
+model = "worker"
+reasoning = "medium"
+script = "sf-profile-inventory.sh"   # AI 起動前に実行し、出力を指示文に注入する(monitor と違い、毎回走る)
+skills = ["profile-standup"]
+
+# --- 薄いラッパー(cron の --script / --monitor-script は cron プロファイルの scripts/ から解決される) ---
+# `factory.py wrappers` が hermes/wrapper.sh.tmpl から作る。target の `live/` は paths.live、`repo/` は paths.repo。
+
+[wrappers."sf-pending-tasks.sh"]
+run = "python3"
+target = "live/notion_pending_tasks.py"
+about = "取り込みの監視(未着手のタスクを1行ずつ。空・変化なしなら AI を起こさない)"
+
+[wrappers."sf-planner-status.sh"]
+run = "python3"
+target = "live/epic_planner_status.py"
+about = "プランナーの監視(エピックごとの歯止めの数値。変化したときだけプランナーを起こす)"
+
+[wrappers."sf-health.sh"]
+run = "python3"
+target = "live/epic_pipeline_health.py"
+about = "案件パイプラインの監視(ok または ALERT/ERROR の行)"
+
+[wrappers."sf-review-inbox.sh"]
+run = "python3"
+target = "live/review_inbox_status.py"
+about = "レビュー結果の反映の監視(人が決めて未反映の行を DECIDED 行で出す)"
+
+[wrappers."sf-gate.sh"]
+run = "python3"
+target = "live/epic_gate_apply.py"
+about = "ゲート制御(工程の順番、カード作成、承認の依頼。AI なし)。注意: これは --apply で実際にカードと承認の依頼を作る。反映なしの試し実行は epic_gate_controller.py"
+
+[wrappers."sf-ship.sh"]
+run = "python3"
+target = "live/ship_approved.py"
+about = "承認後の出荷(下書き PR の公開、squash マージ、本番反映。AI なし。引数なしで run と同じ。変わったときだけ出力する)"
+
+[wrappers."sf-task-events.sh"]
+run = "python3"
+target = "live/michiomochi_task_events.py"
+about = "タスク更新の通知(作成・ステータス・名前の変化を1行ずつ。AI なし。空なら沈黙)"
+
+[wrappers."sf-repo-drift.sh"]
+run = "bash"
+target = "repo/tools/repo_drift_check.sh"
+about = "リポジトリと本番の差の確認(差があるときだけ出力する。常に終了コード 0)"
+
+[wrappers."sf-profile-inventory.sh"]
+run = "python3"
+target = "repo/scripts/profile_inventory.py"
+about = "Hermes のプロファイル棚卸し(読み取りだけ。秘密は出さない)"

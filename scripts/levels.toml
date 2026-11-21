@@ -1,0 +1,70 @@
+# レベル(L1 / L2 / L3)ごとの値を置く唯一の場所。文・コード・雛形に同じ値を書き写さず、ここを読む(`${l2_rows}` など)。
+# 環境(wsl / mac)で変わらない定義なので envs/*.toml には置かない。読むのは sfconfig.load_levels()、
+# ずれの検査は tools/lint_levels.py(make test で回る)。キーを足す・消すときは sfconfig.LEVEL_KEYS も直す。
+#
+# rows               工程の行(タスク行)の題。1枚の題が1行。題は工程の範囲 `<最初>〜<最後>`(区切りは 〜／～／~)か、工程名1つ。
+#                    空 = 工程行を作らない。L1 はここが [] であることだけで「作らない」と決まる(`新規作成の停止` には頼らない)。
+# phases             そのレベルが通る工程(epic_common.ORDER の部分列)。rows の工程を順につなぐと phases と同じになる(抜け・重なり・順の違いは lint_levels が落とす)。
+# items              行のやることチェックリストの項目。頭に `<工程名>：` を付ける(その工程の項目になる)。行には、その行の題が受け持つ工程の項目が順に入る。
+#                    ゲート制御が行を作るとき(epic_gate_controller.create_epic_rows)にこれを書く。プランナーは書かない。空 = 行が無い(L1)。
+# deliverables       成果物の名前。ゲート制御が子ページとして先に作り、カードへはリンクで渡す(scripts/templates/phase_card_range_note.md)。L2 に無いもの(見積もり・実装メモ・
+#                    テスト計画と結果)は行の作業メモに、PR 本文は判定書の「PR 本文」の章に書く(別ページにしない。ship_approved が章から下書き PR を組む)。L3 は旧来のまま(別に決める)。
+# judgement_template / judgement_chapters   判定書(リリース判定の子ページ)の雛形と、その H1 の章。epic_common.judgement_chapters(レベル)がここから読み、
+#                    ask_human --release はそのレベルの章がそろっているかを見る(欠けた章は `未確認：判定書に「…」の章がありません。`)。
+# review_chapters    人が見るレビュー行(承認依頼 scripts/templates/gate_ask.md)の H1 の章。雛形の章から並びを変えずに選ぶ(少ないレベルはその章だけで作る)。
+#                    ask_human(epic_common.render_review)はエピックのレベルのこの値で作る。L1 とレベルの無いエピックは L3 の値を使う(章の定義はここだけ)。
+# ai_reviews         カード1枚につく AI レビュー(reviewer)の回数。
+# max_reviews        カード1枚で kanban_request_review を呼んでよい回数の上限(差し戻しを含む。L1 は 1 回、L2・L3 は 3 回)。上限を超えた(次の)request_review は、
+#                    ゲート制御(epic_gate_controller.enforce_review_limit)が kanban の block にして ALERT を1回出し、人に上げる。人が unblock して続けさせるときは、もう1回だけ数えない
+#                    (block した時点の回数より多く request_review されたときだけ、また止める)。ask_human は使わない。tools/lint_levels.py が L1=1・L2=3・L3=3 を見る。
+# 行の完了も、行を作るのと同じくゲート制御が決める(epic_gate_controller.finish_rows)。カードが done で reviewer の合格の run があり、チェックリストが全部済で
+# (範囲の行は項目の頭 `<工程名>：` も残っている)、完了レポートが scripts/remaining_work.py の規則を通り、リリース判定を持つ行は判定書に PROBLEMS が無いときだけ 完了 にする。
+# 満たさないときは完了にせず ALERT を1回出す。L1 は作業の行が完了したら、同じ実行でエピックも 完了 にする。
+#
+# 行を作るのはゲート制御(epic_gate_controller.create_epic_rows。設計書 docs/row-eq-card-redesign.md の段6)。エピックができて行が1本も無いとき、
+# そのレベルの rows を1回だけ作る。行がすでにあるエピック(工程ごとに5行の旧形など)には何もしない。レベルが無いエピックは L3 として作る。
+
+[L1]
+rows = []
+phases = []
+items = []
+deliverables = []
+judgement_template = ""
+judgement_chapters = []
+review_chapters = []
+ai_reviews = 1
+max_reviews = 1
+
+[L2]
+rows = ["要件定義〜リリース判定"]
+phases = ["要件定義", "設計", "実装", "テスト", "リリース判定"]
+items = [
+    "要件定義：要件書（目的・範囲・対象外・受け入れ条件・未確認事項）。ハブの目的・候補・関連ドキュメントから作る",
+    "設計：設計書（変更点・影響範囲・代替案）。見積もりは作業メモに書く（別ページにしない）",
+    "実装：worktree で実装し、push 済みのブランチを残す。実装メモは作業メモに書く（別ページにしない）",
+    "テスト：テスト計画と結果を作業メモに書く（コマンドと出力。別ページにしない）。UI を変えるときは変更前後のスクリーンショットを判定書の草稿に入れる",
+    "リリース判定：判定書の草稿（草稿のみ。判定書に『UI 変更：あり』か『UI 変更：なし』の1行。UI を変えるときは本文に変更前・変更後の画像）。PR 本文は別ページにせず、判定書の「PR 本文」の章に書く",
+]
+deliverables = ["要件書", "設計書", "判定書の草稿"]
+judgement_template = "release_judgement_l2.md"
+judgement_chapters = ["推奨", "人が確かめること", "何を出すか", "完了条件の達成状況", "残っている危険", "未確認", "承認のあとに起きること", "戻し方", "PR 本文"]
+review_chapters = ["判断すること", "推奨", "人が確かめること", "根拠（開くページ）", "判断の結果", "反映の記録"]
+ai_reviews = 1
+max_reviews = 3
+
+[L3]
+rows = ["要件定義〜設計", "実装〜リリース判定"]
+phases = ["要件定義", "設計", "実装", "テスト", "リリース判定"]
+items = [
+    "要件定義：要件書（目的・範囲・対象外・受け入れ条件・未確認事項）。ハブの目的・候補・関連ドキュメントから作る",
+    "設計：設計書（変更点・影響範囲・代替案）と見積もり",
+    "実装：worktree で実装し、push 済みのブランチと実装メモを残す",
+    "テスト：テスト計画と結果（コマンドと出力。UI を変えるときは変更前後のスクリーンショットも）",
+    "リリース判定：判定書の草稿と PR 本文の下書き（草稿のみ。判定書に『UI 変更：あり』か『UI 変更：なし』の1行。UI を変えるときは本文に変更前・変更後の画像）",
+]
+deliverables = ["要件書", "設計書", "見積もり", "実装メモ", "テスト計画", "判定書の草稿", "PR 本文の下書き"]
+judgement_template = "release_judgement.md"
+judgement_chapters = ["推奨", "人が確かめること", "何を出すか", "完了条件の達成状況", "残っている危険", "未確認", "承認のあとに起きること", "戻し方"]
+review_chapters = ["判断すること", "推奨", "人が確かめること", "完了条件の達成状況", "何を出すか", "残っている危険と未確認", "根拠（開くページ）", "判断の結果", "反映の記録"]
+ai_reviews = 1
+max_reviews = 3

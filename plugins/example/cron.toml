@@ -1,0 +1,36 @@
+# Cron jobs of the example plugin. Job keys become `example.<key>` (cron_ids.json uses the same keys).
+# Same format as hermes/cron.toml: model is [models].<name>, deliver is [chat].<name>.
+
+[jobs.slack_join]
+name = "script job without an agent (example plugin)"
+schedule = "every 30m"
+no_agent = true
+script = "sf-slack-join.sh"
+
+[wrappers."sf-slack-join.sh"]
+run = "python3"
+target = "repo/plugins/example/scripts/slack_join.py"
+about = "Example script job. Prints nothing and changes nothing."
+
+[jobs.approval_review]
+name = "approval request review (example plugin)"
+schedule = "0 * * * *"
+prompt = "approval_review"
+model = "light"
+reasoning = "low"
+
+[jobs.slack_digest]
+name = "daily chat digest (example plugin)"
+schedule = "0 9 * * *"
+prompt = "slack_digest"
+model = "worker"
+reasoning = "medium"
+skills = ["example-dev-env-ops", "notion-edit-safety"]
+
+[jobs.procedure_maintenance]
+name = "weekly procedure maintenance (example plugin)"
+schedule = "0 9 * * 1"
+prompt = "procedure_maintenance"
+model = "worker"
+reasoning = "medium"
+skills = ["notion-edit-safety"]

@@ -1,0 +1,118 @@
+{
+ "ai.cache_read_per_session.dev": [
+  2,
+  "91d9bd749669975b"
+ ],
+ "ai.cache_read_per_session.executor": [
+  2,
+  "921830377898995f"
+ ],
+ "ai.cache_read_per_session.reviewer": [
+  2,
+  "f42079c7ae11a7bc"
+ ],
+ "ai.calls_per_session.dev": [
+  2,
+  "1bb08f1a572bc48e"
+ ],
+ "ai.calls_per_session.executor": [
+  2,
+  "74b1a4e14175e8ea"
+ ],
+ "ai.calls_per_session.reviewer": [
+  2,
+  "3b7c3096801aa23f"
+ ],
+ "cards.done": [
+  1,
+  "b855f645e31dafbf"
+ ],
+ "cards.lead_min_p50": [
+  1,
+  "53b67400c93f9f2e"
+ ],
+ "cards.lead_min_p90": [
+  1,
+  "84a0ef8a7eebdb65"
+ ],
+ "cards.work_min_p50": [
+  1,
+  "129cbc3874a4b52b"
+ ],
+ "filing.orphan_tasks": [
+  1,
+  "9420f19734ead647"
+ ],
+ "lint.envs": [
+  1,
+  "f86d1fe4b0b693dc"
+ ],
+ "lint.procedures": [
+  1,
+  "c5a4abd51c4ed9d1"
+ ],
+ "lint.skill": [
+  1,
+  "372b840a4afc6e17"
+ ],
+ "make_test.sec_p50": [
+  1,
+  "9db81a86318e6b5a"
+ ],
+ "review.changes_rate": [
+  1,
+  "3e188012c0fa0c1c"
+ ],
+ "review.rounds_p50": [
+  1,
+  "963361ae86fb466f"
+ ],
+ "runs.crash_fast.executor": [
+  1,
+  "07c8b31d8c1f63d7"
+ ],
+ "runs.crash_fast.reviewer": [
+  1,
+  "a967d2c26c776b60"
+ ],
+ "runs.crashed.executor": [
+  1,
+  "f2bc92dc0fdd0066"
+ ],
+ "runs.crashed.reviewer": [
+  1,
+  "a6311ab2f8f1a8e1"
+ ],
+ "runs.failed": [
+  1,
+  "51d857bc79c306f5"
+ ],
+ "runs.retry_rate": [
+  1,
+  "9174e1856c034114"
+ ],
+ "skills.count": [
+  1,
+  "1c5c82cde88abc67"
+ ],
+ "skills.dup": [
+  1,
+  "a6291fb2f2210fa5"
+ ],
+ "skills.refs": [
+  1,
+  "4bab35364a12df45"
+ ],
+ "skills.total_chars": [
+  1,
+  "b5688cbce4958b09"
+ ],
+ "skills.violations": [
+  1,
+  "a23c06a460d5e2ae"
+ ],
+ "stall.rate": [
+  1,
+  "cfd1480f61d700ce"
+ ]
+}

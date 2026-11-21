@@ -1,0 +1,188 @@
+{
+  "format": 1,
+  "note": "`factory.py notion-export-schema` が本番のDBから書き出した。`notion-bootstrap` はこれでDBを作り、`doctor` はこれと照合する。",
+  "databases": {
+    "epic": {
+      "title": "エピック",
+      "icon": "🧩",
+      "properties": {
+        "名前": {
+          "type": "title"
+        },
+        "ステータス": {
+          "type": "status",
+          "options": [
+            {
+              "name": "要件定義",
+              "color": "gray",
+              "group": "To-do"
+            },
+            {
+              "name": "設計",
+              "color": "blue",
+              "group": "In progress"
+            },
+            {
+              "name": "実装",
+              "color": "blue",
+              "group": "In progress"
+            },
+            {
+              "name": "テスト",
+              "color": "blue",
+              "group": "In progress"
+            },
+            {
+              "name": "承認待ち",
+              "color": "yellow",
+              "group": "In progress"
+            },
+            {
+              "name": "完了",
+              "color": "green",
+              "group": "Complete"
+            },
+            {
+              "name": "中止",
+              "color": "red",
+              "group": "Complete"
+            }
+          ]
+        },
+        "タスク": {
+          "type": "relation",
+          "relation": {
+            "target": "task",
+            "mode": "dual_property",
+            "synced_property_name": "エピック"
+          }
+        },
+        "作成日時": {
+          "type": "created_time"
+        },
+        "新規作成の停止": {
+          "type": "checkbox"
+        },
+        "チャット": {
+          "type": "url"
+        },
+        "種別": {
+          "type": "select",
+          "options": [
+            {
+              "name": "プロダクト開発",
+              "color": "blue"
+            },
+            {
+              "name": "調査",
+              "color": "purple"
+            }
+          ]
+        }
+      }
+    },
+    "task": {
+      "title": "タスク",
+      "icon": "✅",
+      "properties": {
+        "タスク名": {
+          "type": "title"
+        },
+        "エピック": {
+          "type": "relation",
+          "relation": {
+            "target": "epic",
+            "mode": "dual_property",
+            "synced_property_name": "タスク"
+          }
+        },
+        "ステータス": {
+          "type": "status",
+          "options": [
+            {
+              "name": "未着手",
+              "color": "gray",
+              "group": "To-do"
+            },
+            {
+              "name": "進行中",
+              "color": "blue",
+              "group": "In progress"
+            },
+            {
+              "name": "レビュー中",
+              "color": "yellow",
+              "group": "In progress"
+            },
+            {
+              "name": "完了",
+              "color": "green",
+              "group": "Complete"
+            },
+            {
+              "name": "キャンセル",
+              "color": "red",
+              "group": "Complete"
+            }
+          ]
+        },
+        "作成日時": {
+          "type": "created_time"
+        },
+        "最終更新日時": {
+          "type": "last_edited_time"
+        }
+      }
+    },
+    "review": {
+      "title": "レビュー",
+      "icon": "🙋",
+      "properties": {
+        "名前": {
+          "type": "title"
+        },
+        "キー": {
+          "type": "rich_text"
+        },
+        "ステータス": {
+          "type": "status",
+          "options": [
+            {
+              "name": "レビュー待ち",
+              "color": "yellow",
+              "group": "To-do"
+            },
+            {
+              "name": "承認",
+              "color": "green",
+              "group": "Complete"
+            },
+            {
+              "name": "差し戻し",
+              "color": "red",
+              "group": "Complete"
+            },
+            {
+              "name": "取り下げ",
+              "color": "gray",
+              "group": "Complete"
+            }
+          ]
+        },
+        "対象エピック": {
+          "type": "relation",
+          "relation": {
+            "target": "epic",
+            "mode": "single_property"
+          }
+        },
+        "反映済み": {
+          "type": "checkbox"
+        },
+        "作成日時": {
+          "type": "created_time"
+        }
+      }
+    }
+  }
+}

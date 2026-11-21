@@ -1,0 +1,46 @@
+# michiomochi 環境(WSL)。ここが本番の値の正本。`make deploy` が <live>/config.toml として配る。
+owner = "michiomochi"
+
+[hermes]
+home = "~/.hermes"
+cron_profile = "dev"
+board = "dev"
+path_prepend = ["~/.local/share/mise/shims", "~/.local/bin"]
+
+[paths]
+repo = "~/ghq/github.com/example-org/sf"
+live = "~/.hermes/scripts/sf"
+skills = "~/.hermes/shared/skills"
+state = "~/.hermes/state"
+
+[notion]
+parent_page = "085c6962-2813-a103-a601-fdeab7a56354"
+task_ds = "1fc17149-3110-bac2-b3e9-008de0515786"
+epic_ds = "51a4bd0e-3f79-00a1-c2fa-dae61bdc22f0"
+review_ds = "31cd1b97-b525-0c17-3e66-508b9f72b88a"
+
+[chat]
+deliver = "discord:1473768887694246154"
+failure_deliver = "discord:1421420969335515535"
+mention_user = "199335018222053302"                # 承認依頼でメンションする Discord のユーザー ID(空なら投稿だけ)
+fallback_parent = "discord:1421420969335515535"    # 承認依頼の投稿先が無いとき、ここに新規スレッドを作る(--deliver 形式。投稿には channel id だけ使う)
+
+[models]
+provider = "claude-subscription-directsdk-experimental"
+worker = "claude-sonnet-5-5[1m]"
+design = "claude-sonnet-5-5[1m]"
+reviewer = "claude-opus-5-5[1m]"
+light = "claude-haiku-5-5"
+
+[git]
+branch_prefix = "michiomochi/"
+repo_url = "https://github.com/example-org/sf"
+
+# 承認のあとの出荷(scripts/ship_approved.py)。登録した repo だけ、マージのあとに本番へ反映する。登録の無い repo はマージまで(1章の文にそう書く)。
+# test = マージ前に main に重ねて流す検査、test_fast = ops.py verify が回す fast の検査(test があれば必須。tools/lint_envs.py が見る)、deploy = 順に流すコマンド(作業ディレクトリは ghq の main の作業ツリー)、cron_paths = 差分に入っていたら cron の定義を先に流すパス、describe = 1章の文。
+[ship.repos."example-org/sf"]
+test = ["make", "test"]
+test_fast = ["make", "test-fast"]
+deploy = [["make", "ship"], ["make", "check"], ["make", "smoke"]]
+cron_paths = ["hermes/cron.toml", "hermes/wrapper.sh.tmpl", "plugins/*/cron.toml"]
+describe = "本番（~/.hermes/scripts/sf）へ反映します"

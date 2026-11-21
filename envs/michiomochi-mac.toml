@@ -1,0 +1,43 @@
+# michiomochi 環境(Mac・Slack)。いま稼働している Hermes(default プロファイル)の値。
+# Adds the bundled example plugin (plugins/example) to the core flow.
+# オフにするには plugins から "example" を外す(cron・スキル・指示文・スクリプトのラッパーが一切入らない)。
+owner = "michiomochi"
+plugins = ["example"]
+
+[hermes]
+home = "~/.hermes"
+cron_profile = "default"            # cron は default プロファイル(~/.hermes/cron/jobs.json)
+board = "work-card"
+path_prepend = ["~/.local/share/mise/shims", "~/.local/bin"]
+
+[paths]
+repo = "~/ghq/github.com/example-org/sf"
+live = "~/.hermes/scripts/sf"
+skills = "~/.hermes/shared-skills"   # config.yaml の skills.external_dirs
+state = "~/.hermes/state"
+
+[notion]
+parent_page = "085c6962-2813-a103-a601-fdeab7a56354"
+task_ds = "7a9f8c84-4746-9ac6-44e6-a7be9ba855f6"
+epic_ds = "5465ab83-ce61-3ceb-bc50-566d4df70364"
+review_ds = "9e5f7903-2cbd-3b20-6a4d-9db32c0be851"
+task_epic_prop = "michiomochiエピック"   # タスク DB の「エピックへの relation」の名前(省略時は「エピック」)
+# 既定テンプレートのページ ID(環境ごとに違う。任意)
+task_template = "d468d499-34f3-1a1b-acd5-120ee94b6038"
+epic_template = "0c431ff6-8f5a-0ce8-d187-a0b99b006242"
+review_template = "4fcbbed0-e24a-2b56-319f-b0058b2780ef"
+
+[chat]
+deliver = "slack:C09396336EC"          # cron の通知は常にこのチャンネル(スレッドではない)
+failure_deliver = "slack:C09396336EC"
+
+[models]
+provider = "claude-subscription-directsdk-experimental"
+worker = "claude-sonnet-5-5[1m]"
+design = "claude-sonnet-5-5[1m]"
+reviewer = "claude-opus-5-5[1m]"
+light = "claude-haiku-5-5"
+
+[git]
+branch_prefix = "michiomochi/"
+repo_url = "https://github.com/example-org/sf"

@@ -1,0 +1,1 @@
+Summarize yesterday's public chat channels of ${team_name} for ${owner}: decisions, open questions addressed to ${owner}, and incidents. Write the digest as one Notion page and reply with its link only. Reply in Japanese.
